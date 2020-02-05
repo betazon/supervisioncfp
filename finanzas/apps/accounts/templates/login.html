@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block cuerpo %}
+{% if mensaje != "" %}
+<div class="alert alert-danger alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  {{mensaje}}
+</div>
+{% endif %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+      <div class="form-signin">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Iniciar Sesión</h3>
+          </div>
+          <div class="panel-body">
+            <br>
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-12">
+                  <form role="form" action="" method="post">{% csrf_token %}
+                    <div class="form-group">
+                      {{form.user}}
+                    </div>
+                    <div class="form-group">
+                      {{form.password}}
+                    </div>
+                    <div class="form-group">
+                      <button type="submit" class="btn btn-success">Ingresar <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></button>
+                    </form> <br><br>
+                    <div class="pull-left">
+                      <a href="{% url 'reset_pass' %}">Olvidó su contraseña?</a><br>
+                    </div>
+                    <div class="pull-left">
+                      <a href="#">Solicitar acceso al sistema.</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+      </div>
+    </div>
+</div>
+
+  {% endblock %}

@@ -1,0 +1,27 @@
+
+
+barra de progresso
+
+
+
+    <script type="text/javascript">
+
+        //valor para llegar al maximo de la barra
+        var maximo = 100;
+        //asigno los valores iniciales al tag 'progress'
+
+        document.getElementById("barra").setAttribute('value',0);
+        document.getElementById("barra").setAttribute('max',maximo);
+
+        var j=1;
+        progreso = setInterval(function aumentar(){
+            document.getElementById('valor').innerHTML = j;
+            document.getElementById('barra').setAttribute('value',j++);
+            if(j>maximo){
+                clearInterval(progreso);
+                alert('Tabla Leida con exito!');
+
+            }
+        },50);
+
+    </script>

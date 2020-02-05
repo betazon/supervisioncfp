@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block cuerpo %}
+{% if mensaje != "" %}
+<div class="alert alert-danger alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  {{mensaje}}
+</div>
+{% endif %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+      <div class="form-signin">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Restablecer Contraseña</h3>
+          </div>
+          <div class="panel-body">
+            <p>Ingrese el email con el cual fue registrado.</p>
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-12">
+                  <form role="form" action="." method="post">{% csrf_token %}
+                    <div class="form-group">
+                      {{form.email_user}}
+                    </div>
+                    <div class="form-group">
+                      <div class="pull-left">
+                        <a href="../" type="button" class="btn btn-danger">Volver <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></a>
+                      </div>
+                      <div class="pull-right">
+                        <button type="submit" class="btn btn-success">Enviar <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+    </div>
+</div>
+
+{% endblock %}

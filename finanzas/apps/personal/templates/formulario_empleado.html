@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block cuerpo %}
+{% if mensaje != "" %}
+<div class="alert alert-danger alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  {{mensaje}}
+</div>
+{% endif %}
+
+
+
+<div class="container-fluid">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Alta de Persona sean alumnos u Docentes </h3>
+        </div>
+        <div class="panel-body">
+        <br>
+		<div class="col-md-12">
+            <form class="form" action= "" role="form" method="POST">{% csrf_token %}
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            {{form.documento}}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            {{form.nombre}}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            {{form.apellido}}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            {{form.direccion}}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            {{form.ciudad}}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            {{form.email}}
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            {{form.telefono}}
+                        </div>
+                    </div>
+     
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group ">
+                            <div class="pull-right">
+
+                                <a href="{% url 'listar' %}" type="button" class="btn btn-danger ">Volver <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></a>
+                                <button type="submit" class="btn btn-success ">Guardar <span class=" glyphicon glyphicon-save" aria-hidden="true"></span></button>
+                            </div>
+                        </div>
+                    </div>
+
+        </div></form>
+    </div>
+</div>
+    </div>
+{% endblock %}
