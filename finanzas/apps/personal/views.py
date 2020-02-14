@@ -75,6 +75,48 @@ def personal_create_view(request):
     return render(request, 'formulario_empleado.html', values)
 
 
+def alumnos_create_view(request):
+    form = PersonaForm()
+    mensaje= ""
+   
+    if request.method == 'POST':
+        form = PersonaForm(request.POST)
+        print(form.errors)
+        if form.is_valid():
+            personales = PersonaForm()
+                       
+            apellido = form.cleaned_data['apellido']
+            nombre = form.cleaned_data['nombre']
+            documento = form.cleaned_data['documento']
+            telefono = form.cleaned_data['telefono']
+            email = form.cleaned_data ['email']
+            direccion = form.cleaned_data['direccion']
+            ciudad = form.cleaned_data['ciudad']
+           
+
+            form.apellido = apellido
+            form.nombre = nombre
+            form.documento = documento
+            form.telefono = telefono
+            form.email = email
+            form.direccion = direccion
+            form.ciudad_id = ciudad.id
+            form.save()
+
+            return redirect('listar')
+
+            mensaje = "Datos Grabados con exitos"
+        else:
+            mensaje = "Los datos no son validos :P"
+    values = {
+        'form':form,
+        'mensaje':mensaje,
+                     }
+    return render(request, 'formulario_empleado.html', values)
+
+
+
+
 def cfp_delete_view(request, cfp_id):
 
     borracfp = Cfp.objects.get(id=cfp_id)
@@ -85,6 +127,17 @@ def cfp_delete_view(request, cfp_id):
         'lista_cfp':lista_cfp,
     }
     return render(request, 'lista_cfp.html', values)
+
+def alumnos_delete_view(request, alumnos_id):
+
+    borraalumnos = Alumnos.objects.get(id=alumnos_id)
+    form = alumnosForm(instance=borracfp)
+    borraalumnos.delete()
+    lista_alumnos = alumnos.objects.all()
+    values = {
+        'lista_alumnos':lista_cfp,
+    }
+    return render(request, 'lista_alumnos.html', values)
 
     
 
@@ -104,6 +157,17 @@ def personal_list_view(request):
         'lista':lista,
     }
     return render(request, 'lista_empleado.html', values)
+
+
+def alumnos_list_view(request):
+    lista_alumnos = Alumnos.objects.all()
+    values = {
+        'lista_alumnos':lista_alumnos,
+    }
+    return render(request, 'lista_alumnos.html', values)
+
+
+
 
 
 def cfp_update_view(request,cfp_id):
@@ -178,7 +242,41 @@ def personal_update_view(request,persona_id):
     values = {'form': form,  'mensaje': mensaje}
     return render(request, 'editar_empleado.html', values)
 
+def alumnos_update_view(request,persona_id):
 
+    documentopersona=Persona.objects.get(pk=persona_id)
+    form = PersonaForm(instance=documentopersona)
+
+    mensaje = ""
+    if request.method == 'POST':
+        form = PersonaForm(request.POST, instance=documentopersona)
+
+        if form.is_valid():
+
+            personales = Persona()
+            apellido = form.cleaned_data['apellido']
+            nombre = form.cleaned_data['nombre']
+            documento = form.cleaned_data['documento']
+            telefono = form.cleaned_data['telefono']
+            email = form.cleaned_data['email']
+            direccion = form.cleaned_data['direccion']
+            ciudad = form.cleaned_data['ciudad']
+            
+
+            personales.apellido = apellido
+            personales.nombre = nombre
+            personales.documento = documento
+            personales.telefono = telefono
+            personales.email = email
+            personales.direccion = direccion
+            personales.ciudad_id = ciudad.id
+            form.save()
+
+            mensaje = "Los datos de la persona fueron Modificados"
+        else:
+            mensaje = "Los datos no son validos"
+    values = {'form': form,  'mensaje': mensaje}
+    return render(request, 'editar_empleado.html', values)
 
 def personal_delete_view(request, persona_id):
     
