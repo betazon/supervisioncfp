@@ -78,28 +78,27 @@ WSGI_APPLICATION = 'finanzas.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
-    
-      #'default': {
-        #'ENGINE': 'django.db.backends.mysql',
-      #  'ENGINE': 'mysql.connector.django',
-      #  'NAME': 'CFP',
-      #  'USER': 'root',
-      #  'PASSWORD': '12345',
-      #  'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
-      #  'PORT': '3306',
-      #  'STORAGE_ENGINE': 'INNODB'
+
+  
+      'default': {
+        'ENGINE': 'django.db.backends.mysql',
+  
+        #'ENGINE': 'mysql.connector.django',
+        #'USE_PURE':'true',
+        #'raw':'False',
+        'NAME': 'CFP2',
+        'USER': 'root',
+        'PASSWORD': '12345',
+        'HOST': '127.0.0.1',   # Or an IP Address that your DB is hosted on
+        'PORT': '3306',
+        'STORAGE_ENGINE': 'INNODB'
          
 
-
-
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    #'default': {
+    #    'ENGINE': 'django.db.backends.sqlite3',
+        
+    #    'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     
-
-
-
-
     }
 }
 

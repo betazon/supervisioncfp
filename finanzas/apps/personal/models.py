@@ -87,8 +87,8 @@ class Cfp (models.Model):
 
 class Cursos (models.Model):
     docente = models.ForeignKey(Docentes)
-    fecha_ini = models.DateField()
-    fecha_fin = models.DateField()
+    fecha_ini = models.CharField(max_length = 8)
+    fecha_fin = models.CharField(max_length = 8)
     sede = models.CharField(max_length = 2)
     cfp = models.ForeignKey(Cfp)
     desgranamiento = models.CharField(max_length = 2)
@@ -97,7 +97,7 @@ class Cursos (models.Model):
 
 
 class Asistencia (models.Model):
-    fecha = models.DateField()
+    fecha = models.CharField(max_length = 8)
     alumnos = models.ForeignKey(Alumnos)
     estado = models.CharField(max_length = 8)
     cursos = models.ForeignKey(Cursos)

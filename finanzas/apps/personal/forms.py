@@ -30,6 +30,26 @@ class PersonaForm(forms.ModelForm):
         model = Persona
         exclude = []
 
+class AlumnosForm(forms.ModelForm):
+    apellido = forms.CharField(widget=forms.TextInput(attrs=dict({'class': 'form-control input-block-level', 'placeholder': 'Apellido'}, render_value=False)))
+    nombre = forms.CharField(widget=forms.TextInput(attrs=dict({'class':'form-control input-block-level', 'placeholder':'Nombre'},render_value=False)))
+    documento = forms.CharField(widget=forms.TextInput(attrs=dict({'class':'form-control input-block-level', 'placeholder':'Documento'},render_value=False)))
+    direccion = forms.CharField(widget=forms.TextInput(attrs=dict({'class':'form-control input-block-level', 'placeholder':'Domicilio'},render_value=False)))
+    ciudad = forms.ModelChoiceField(widget=forms.Select(attrs=dict({'class':'form-control input-block-level'})), queryset= Ciudad.objects.all())
+    email = forms.CharField(widget=forms.EmailInput(attrs=dict({'class':'form-control input-block-level', 'placeholder':'em@il'},render_value=False)))
+    telefono = forms.CharField(widget=forms.TextInput(attrs=dict({'class':'form-control input-block-level', 'placeholder':'Nro. de telefono'},render_value=False)))
+    
+    class Meta:
+        model = Persona
+        exclude = []
+
+
+
+
+
+
+
+
 class EmpleadoForm (forms.ModelForm):
 
     sexo = forms.ModelChoiceField(widget=forms.Select(attrs=dict({'class':'form-control input-block-level'})), queryset= Sexo.objects.all())
