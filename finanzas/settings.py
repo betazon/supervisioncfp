@@ -86,10 +86,24 @@ DATABASES = {
         #'ENGINE': 'mysql.connector.django',
         #'USE_PURE':'true',
         #'raw':'False',
-        'NAME': 'CFP2',
-        'USER': 'root',
-        'PASSWORD': '12345',
-        'HOST': '127.0.0.1',   # Or an IP Address that your DB is hosted on
+        
+
+
+        'NAME': 'betazon$CFP2',
+        'USER': 'betazon',
+        'PASSWORD': 'gorila65',
+
+        'HOST': 'betazon.mysql.pythonanywhere-services.com',   # Or an IP Address that your DB is hosted on
+
+
+
+        #'NAME': 'CFP2',
+        #'USER': 'root',
+        #'PASSWORD': '12345',
+        #'HOST': '127.0.0.1',   # Or an IP Address that your DB is hosted on
+
+
+
         'PORT': '3306',
         'STORAGE_ENGINE': 'INNODB'
          
